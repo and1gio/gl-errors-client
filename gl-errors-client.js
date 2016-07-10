@@ -1,19 +1,19 @@
 var clientErrorStore = require("gl-clients-error-codes");
-var HRH = require("msda-http-request-helper");
+var API = require("gl-api-request-helper");
 
 var ErrorClient = function (config) {
     var me = this;
     me.config = config;
     me.isReady = false;
     me.errorsStore = null;
-    me.hrh = new HRH(me.config);
+    me.api = new API(me.config);
 };
 
 var errorClient = ErrorClient.prototype;
 
 errorClient.load = function (cb) {
     var me = this;
-    me.hrh.request("errorEntry/find/all", {}, function (err, res) {
+    me.api.request("errorEntry/find/all", {}, function (err, res) {
         if (err) {
             return cb(err, null);
         }
