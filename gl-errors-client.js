@@ -47,7 +47,7 @@ errorClient.getError = function (keywords) {
     var me = this;
     if (me.isReady && me.errorsStore) {
         var keywordList = [];
-        keywordList.concat(keywords);
+        keywordList = keywordList.concat(keywords);
         for (var i in keywordList) {
             keywordList[i] = me.get(keywordList[i]);
         }
@@ -57,6 +57,7 @@ errorClient.getError = function (keywords) {
     }
 };
 
+// TODO - this method must be private
 errorClient.get = function (keyword) {
     var me = this;
     if (me.isReady && me.errorsStore[keyword]) {
