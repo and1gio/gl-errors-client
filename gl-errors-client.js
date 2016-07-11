@@ -42,10 +42,12 @@ var loadHandler = function (res, cb) {
     }
 };
 
+// TODO - this method must be renamed to getErrors
 errorClient.getError = function (keywords) {
     var me = this;
     if (me.isReady && me.errorsStore) {
-        var keywordList = keywordList.concat(keywords);
+        var keywordList = [];
+        keywordList.concat(keywords);
         for (var i in keywordList) {
             keywordList[i] = me.get(keywordList[i]);
         }
