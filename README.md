@@ -1,2 +1,2 @@
-# gl-errors-client
-GL errors client
+# z-errors-client
+Z errors client
