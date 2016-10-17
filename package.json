@@ -1,7 +1,7 @@
 {
-    "name": "gl-errors-client",
-    "description": "GL Errors Client",
-    "version": "0.0.3",
+    "name": "z-errors-client",
+    "description": "Z Errors Client",
+    "version": "0.0.1",
     "author": {
         "name": "Giorgi Maisuradze"
     },
@@ -16,8 +16,7 @@
         }
     ],
     "dependencies": {
-        "gl-api-request-helper": "0.0.1",
-        "gl-clients-error-codes": "0.0.1"
+        "z-api-request-helper": "0.0.1"
     },
-    "main": "gl-errors-client.js"
+    "main": "z-errors-client.js"
 }

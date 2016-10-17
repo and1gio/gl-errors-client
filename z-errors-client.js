@@ -1,5 +1,4 @@
-var clientErrorStore = require("gl-clients-error-codes");
-var API = require("gl-api-request-helper");
+var API = require("z-api-request-helper");
 
 var ErrorClient = function (config) {
     var me = this;
@@ -13,7 +12,7 @@ var errorClient = ErrorClient.prototype;
 
 errorClient.load = function (cb) {
     var me = this;
-    me.api.request("errorEntry/find/all", {}, function (err, res) {
+    me.api.post("errorEntry/find/all", {}, function (err, res) {
         if (err) {
             return cb(err, null);
         }
@@ -36,14 +35,13 @@ var loadHandler = function (res, cb) {
         me.isReady = true;
         cb(null, res);
     } else {
-        var error = clientErrorStore("DATA_IS_EMPTY", null);
+
         me.isReady = false;
-        cb(error, null);
+        cb([{keyword: "DATA_IS_EMPTY"}], null);
     }
 };
 
-// TODO - this method must be renamed to getErrors
-errorClient.getError = function (keywords) {
+errorClient.getErrors = function (keywords) {
     var me = this;
     if (me.isReady && me.errorsStore) {
         var keywordList = [];
@@ -53,17 +51,16 @@ errorClient.getError = function (keywords) {
         }
         return keywordList;
     } else {
-        return [clientErrorStore("DATA_NOT_READY", null)];
+        return [{keyword: "DATA_NOT_READY"}];
     }
 };
 
-// TODO - this method must be private
 errorClient.get = function (keyword) {
     var me = this;
     if (me.isReady && me.errorsStore[keyword]) {
         return me.errorsStore[keyword];
     } else {
-        return clientErrorStore("ERROR_NOT_FOUND", null);
+        return [{keyword: "ERROR_NOT_FOUND"}];
     }
 };
 
