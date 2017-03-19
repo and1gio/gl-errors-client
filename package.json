@@ -1,7 +1,7 @@
 {
     "name": "z-errors-client",
     "description": "Z Errors Client",
-    "version": "0.0.1",
+    "version": "0.0.2",
     "author": {
         "name": "Giorgi Maisuradze"
     },
@@ -16,7 +16,7 @@
         }
     ],
     "dependencies": {
-        "z-api-request-helper": "0.0.1"
+        "z-api-request-helper": "0.0.5"
     },
     "main": "z-errors-client.js"
 }
